@@ -15,12 +15,12 @@ public class PrimeNumberCheckerApp {
 		while (choice.equalsIgnoreCase("y")) {
 			int num = Console.getInt("Please enter an integer between 1 and 5000: ");
 			int i;
-			boolean composite = false;
-			boolean prime = true;
 			if (num < 1 || num > 5000) {
 				System.out.println("Error! Integer must be between 1 and 5000");
 				continue;
 			}
+			boolean composite = false;
+			boolean prime = true;
 			if (num >= 1 || num <= 5000) {
 				for (i = 2; i <= num / 2; ++i) {
 					if (num % i == 0) {
