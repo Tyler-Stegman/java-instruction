@@ -21,11 +21,13 @@ public class PRSConsoleApp {
 			case "list":
 				listUsers();
 				break;
-			case "add":
-				addUser();
-				break;
 			case "get":
 				getUser();
+				break;
+			case "login":
+				login();
+			case "add":
+				addUser();
 			case "delete":
 				deleteUser();
 			case "exit":
@@ -38,25 +40,37 @@ public class PRSConsoleApp {
 		System.out.println("Bye");
 	}
 
+	private static void login() {
+		if(userRepo instanceof UserDB) {
+			UserDB ur = (UserDB)userRepo;
+			String un = Console.getString("Username?: ", true);
+			String pw = Console.getString("Password?: ", true);
+			User u = ur.login(un, pw);
+			if(u==null) {
+				System.out.println("Invalid Login");
+			}
+			else {
+				System.out.println("User found: "+u);
+			}
+			System.out.println();
+		}
+	}
+
 	private static void deleteUser() {
-		// prompt user for id and get the user
 		User u = getIdAndReturnUser();
-
-		// delete the user
-		userRepo.delete(u);
-
-		// display confirmation message
-		System.out.println("User successfully deleted!");
+		if(userRepo.delete(u)) {
+			System.out.println("User successfully deleted!");	
+		}
+		else {
+			System.out.println("Error deleting user.");
+		}
 		System.out.println();
 	}
 
 	private static void getUser() {
-		// prompt user for id and get the user
 		User u = getIdAndReturnUser();
-
-		// display to screen
-		System.out.println(u);
-
+		System.out.println("User found: "+u);
+		System.out.println();
 	}
 
 	private static void addUser() {
@@ -89,9 +103,12 @@ public class PRSConsoleApp {
 	private static User getIdAndReturnUser() {
 		User u = null;
 		while (u == null) {
-			int id = Console.getInt("ID: ", 0, (int) Double.POSITIVE_INFINITY);
+			int id = Console.getInt("User id: ", 0, (int) Double.POSITIVE_INFINITY);
 			u = userRepo.get(id);
-			System.out.println();
+			if (u==null) {
+				System.out.println("No user found for id: "+id+".");
+				System.out.println();
+			}
 		}
 
 		return u;
@@ -100,11 +117,12 @@ public class PRSConsoleApp {
 	private static void displayMenu() {
 		System.out.println("COMMAND MENU:");
 		System.out.println("=============================");
-		System.out.println("list   -    list all users");
-		System.out.println("add    -    add all users");
-		System.out.println("get    -    get a user");
-		System.out.println("delete -    delete a user");
-		System.out.println("exit   -    exit program");
+		System.out.println("list     -    list all users");
+		System.out.println("get      -    add all users");
+		System.out.println("login    -    login to app");
+		System.out.println("add      -    login to app");
+		System.out.println("delete   -    delete a user");
+		System.out.println("exit     -    exit program");
 		System.out.println();
 	}
 
