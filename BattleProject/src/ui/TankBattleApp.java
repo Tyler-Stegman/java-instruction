@@ -15,7 +15,7 @@ public class TankBattleApp {
 		Tank t3 = new Tank(3, "Axis", "Light", "Panzerkampfwagen IV (Panzer IV)", 500, 500);
 		Tank t4 = new Tank(4, "Allies", "Heavy", "M26 Pershing", 750, 1000);
 		Tank t5 = new Tank(5, "Allies", "Medium", "M4 Sherman (Firefly)", 750, 600);
-		Tank t6 = new Tank(6, "Allies", "Light", "M3 Lee", 500, 500);
+		Tank t6 = new Tank(6, "Allies", "Light", "M3 Stuart", 500, 500);
 		tanks.add(t1);
 		tanks.add(t2);
 		tanks.add(t3);
@@ -37,9 +37,6 @@ public class TankBattleApp {
 			case "history":
 				history();
 				break;
-			/*
-			 * case "upgrade": upgradeTank(); break;
-			 */
 			case "play":
 				play();
 			case "exit":
@@ -109,14 +106,30 @@ public class TankBattleApp {
 							+ " the invasion of Germany.  Intended as a replacement of the M4 Sherman,[citation needed] a prolonged development period meant that\n"
 							+ " only a small number saw combat in Europe, notably in the 9th Armored Division's dash to take the Ludendorff Bridge during the Battle\n"
 							+ " of Remagen.  Based on the criteria of firepower, mobility, and protection, American historian R. P. Hunnicutt ranked the Pershing\n"
-							+ " behind the German Panther medium tank, but ahead of the Tiger I heavy tank.");
+							+ " behind the German Panther medium tank, but ahead of the Tiger I heavy tank.\n");
 		}
 		if (tankId == 5) {
 			System.out.println("M4 Sherman");
 			System.out.println("The M4 Sherman, officially Medium Tank, M4, was the most widely used medium tank by the United States and Western Allies in World War II.\n"
 							+ " The M4 Sherman proved to be reliable, relatively cheap to produce, and available in great numbers. It was also the basis of several\n"
 							+ " successful tank destroyers, such as the M10, Achilles and M36. Tens of thousands were distributed through the Lend-Lease program to the\n"
-							+ " British Commonwealth and Soviet Union. The tank was named by the British for the American Civil War general William Tecumseh Sherman.");
+							+ " British Commonwealth and Soviet Union. The tank was named by the British for the American Civil War general William Tecumseh Sherman.\n"
+							+ " The M4 Sherman evolved from the M3 Medium Tank,[N 1] which had its main armament in a side sponson mount. The M4 retained much of the\n"
+							+ " previous mechanical design, but moved the main 75 mm gun into a fully traversing central turret.\n\n"
+							+ " Even by 1944, most M4 Shermans kept their dual-purpose 75 mm gun.[11] By then, the M4 was inferior in firepower and armor to increasing\n"
+							+ " numbers of German heavy tanks, but was able to fight on with the help of considerable numerical superiority, greater mechanical reliability,\n"
+							+ " better logistical support, and support from growing numbers of fighter-bombers and artillery pieces.  Some Shermans were produced with a more\n"
+							+ " capable gun, the 76 mm gun M1, or refitted with a 76.2mm calibre Ordnance QF 17-pounder gun by the British (the Sherman Firefly).\n"
+							+ " The M4 went on to be produced in large numbers, being the most produced tank in American history.\n");
+		}
+		if (tankId == 6) {
+			System.out.println("M3 Lee");
+			System.out.println("The M3 Stuart, officially Light Tank, M3, was an American light tank of World War II.  It was supplied to British and other Commonwealth forces\n"
+							+ " under lend-lease prior to the entry of the U.S. into the war. Thereafter, it was used by U.S. and Allied forces until the end of the war.\n"
+							+ " Stuarts were the first American-crewed tanks in World War II to engage the enemy in tank versus tank combat.  the M3 was initially armed with a\n"
+							+ " 37 mm M5 gun and five .30-06 Browning M1919A4 machine guns: coaxial with the gun, on top of the turret in an M20 anti-aircraft mount, in a ball mount\n"
+							+ " in right bow, and in the right and left hull sponsons.  For a light tank, the Stuart was fairly heavily armored. It had 38 mm of armor on the upper front\n"
+							+ " hull, 44 mm on the lower front hull, 51 mm on the gun mantlet, 38 mm on the turret sides, 25 mm on the hull sides, and 25 mm on the hull rear.\n");
 		}
 	}
 
@@ -124,12 +137,6 @@ public class TankBattleApp {
 	private static void play() {
 
 	}
-
-	/*
-	 * private static void upgradeTank() { // TODO Auto-generated method stub
-	 * 
-	 * }
-	 */
 
 	private static void listTanks() {
 		System.out.println();
