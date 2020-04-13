@@ -25,7 +25,7 @@ public class TankBattleApp {
 
 		System.out.println("Tank Battle!\n");
 		String userName = Console.getString("Enter new username: ", true);
-		System.out.println("Welcome, " + userName + ", to the Tank Battle App!");
+		System.out.println("Welcome, " + userName + ", to the Tank Battle App!\n");
 		String command = "";
 		while (!command.equalsIgnoreCase("exit")) {
 			displayMenu();
@@ -34,11 +34,14 @@ public class TankBattleApp {
 			case "tanks":
 				listTanks();
 				break;
-			case "upgrade":
-				upgradeTank();
+			case "history":
+				history();
 				break;
-			case "select":
-				selectTank();
+			/*
+			 * case "upgrade": upgradeTank(); break;
+			 */
+			case "play":
+				play();
 			case "exit":
 				break;
 			default:
@@ -51,34 +54,96 @@ public class TankBattleApp {
 
 	}
 
-	// TODO select Tank and play game?
-	private static void selectTank() {
-		// TODO Auto-generated method stub
-
-	}
-
-	private static void upgradeTank() {
-		// TODO Auto-generated method stub
-
-	}
-
-	private static void listTanks() {
+	private static void history() {
 		System.out.println();
-		System.out.println("Available Tanks");
-		System.out.println("---------------");
+		System.out.println("Please select a tank");
+		System.out.println("----------------------");
 		for (Tank t : tanks) {
 			System.out.println(t);
 		}
-		if (tanks.size() < 1) {
-			System.out.println("There are currently no pets available");
+		int tankId = Console.getInt("Tank ID: ", 0, tanks.size() + 1);
+		System.out.println(tankId + " was selected.");
+		if (tankId == 1) {
+			System.out.println("Panzerkampfwagen VI (Tiger I)\n");
+			System.out.println(
+					"The Tiger I, a German heavy tank of World War II, operated from 1942 in Africa and Europe, usually in\n"
+							+ " independent heavy tank battalions. Its late war designation was Panzerkampfwagen VI Tiger Ausf. E.\n"
+							+ "The early war variant was designated Panzerkampfwagen VI Tiger Ausf. H1. Often times, people refer\n"
+							+ " to both of the variants as Tiger. The Tiger I gave the German Army its first armoured fighting\n"
+							+ " vehicle that mounted the 8.8 cm KwK 36 gun (derived from the 8.8 cm Flak 36). 1,347 were built\n"
+							+ " between August 1942 and August 1944. After August 1944, production of the Tiger I was phased out\n"
+							+ " in favour of the Tiger II.\n\n"
+							+ " The tank was given its nickname \"Tiger\" by Ferdinand Porsche, and the Roman numeral was added\n"
+							+ " after the later Tiger II entered production. The initial designation was\n"
+							+ " Panzerkampfwagen VI Ausführung H (literally 'Armored Combat Wagon/Vehicle VI version H',\n"
+							+ " abbreviated PzKpfw VI Ausf. H) where 'H' denoted Henschel as the designer/manufacturer. It was\n"
+							+ " classified with ordnance inventory designation Sd.Kfz. 182. The tank was later re-designated as\n"
+							+ " PzKpfw VI Ausf. E in March 1943, with ordnance inventory designation Sd.Kfz. 181.\n");
 		}
+		if (tankId == 2) {
+			System.out.println("Panzerkampfwagen V (Panther I)");
+			System.out.println(
+					"The Panther is a German medium tank deployed during World War II on the Eastern and Western Fronts in\n"
+							+ " Europe from mid-1943 to the war's end in 1945.  The Panther was intended to counter the Soviet T-34\n"
+							+ " and to replace the Panzer III and Panzer IV. Nevertheless, it served alongside the Panzer IV and the\n"
+							+ " heavier Tiger I until the end of the war.\n\n"
+							+ " While having essentially the same Maybach V12 petrol (690 hp) engine as the Tiger I, it had more efficient\n"
+							+ " frontal hull armour, better gun penetration, was lighter and faster, and could traverse rough terrain better\n"
+							+ " than the Tiger I. The trade-off was weaker side armour, which made it vulnerable to flanking fire.\n"
+							+ " The Panther proved to be effective in open country and long range engagements, but did not provide enough high\n"
+							+ " explosive firepower against infantry.\n");
+		}
+		if (tankId == 3) {
+			System.out.println("Panzerkampfwagen IV (Panzer IV)");
+			System.out.println(
+					"The Panzer IV was the most numerous German tank and the second-most numerous German armored fighting vehicle of the\n"
+							+ " Second World War, with some 8,500 built. It received various upgrades and design modifications, intended to counter\n"
+							+ " new threats, extending its service life. Generally, these involved increasing the Panzer IV's armor protection or\n"
+							+ " upgrading its weapons, although during the last months of the war, with Germany's pressing need for rapid replacement\n"
+							+ " of losses, design changes also included simplifications to speed up the manufacturing process.  The Panzer IV saw service\n"
+							+ " in all combat theaters involving Germany and was the only German tank to remain in continuous production throughout the war.\n");
+		}
+		if (tankId == 4) {
+			System.out.println("M26 Pershing");
+			System.out.println("The M26 Pershing was a heavy tank/medium tank of the United States Army.  It was used in the last months of World War II during\n"
+							+ " the invasion of Germany.  Intended as a replacement of the M4 Sherman,[citation needed] a prolonged development period meant that\n"
+							+ " only a small number saw combat in Europe, notably in the 9th Armored Division's dash to take the Ludendorff Bridge during the Battle\n"
+							+ " of Remagen.  Based on the criteria of firepower, mobility, and protection, American historian R. P. Hunnicutt ranked the Pershing\n"
+							+ " behind the German Panther medium tank, but ahead of the Tiger I heavy tank.");
+		}
+		if (tankId == 5) {
+			System.out.println("M4 Sherman");
+			System.out.println("The M4 Sherman, officially Medium Tank, M4, was the most widely used medium tank by the United States and Western Allies in World War II.\n"
+							+ " The M4 Sherman proved to be reliable, relatively cheap to produce, and available in great numbers. It was also the basis of several\n"
+							+ " successful tank destroyers, such as the M10, Achilles and M36. Tens of thousands were distributed through the Lend-Lease program to the\n"
+							+ " British Commonwealth and Soviet Union. The tank was named by the British for the American Civil War general William Tecumseh Sherman.");
+		}
+	}
 
+	// TODO select Tank and play game?
+	private static void play() {
+
+	}
+
+	/*
+	 * private static void upgradeTank() { // TODO Auto-generated method stub
+	 * 
+	 * }
+	 */
+
+	private static void listTanks() {
+		System.out.println();
+		System.out.println("Available Tanks\n" + "---------------\n");
+		for (Tank t : tanks) {
+			System.out.println(t);
+		}
 	}
 
 	private static void displayMenu() {
 		StringBuilder menu = new StringBuilder("COMMAND MENU\n" + "===============\n");
 		menu.append("tanks     -     show available tanks\n");
 		menu.append("upgrate   -     show available upgrades - THIS FEATURE NOT YET AVAILABLE\n");
+		menu.append("history   -     select a tank for information\n");
 		menu.append("exit      -     exit program\n");
 		System.out.println(menu);
 	}
