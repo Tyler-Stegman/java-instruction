@@ -31,9 +31,6 @@ public class TankBattleApp {
 			displayMenu();
 			command = Console.getString("Command: ", true);
 			switch (command) {
-			case "tanks":
-				listTanks();
-				break;
 			case "history":
 				history();
 				break;
@@ -135,22 +132,86 @@ public class TankBattleApp {
 
 	// TODO select Tank and play game?
 	private static void play() {
-
+		selectTank();
+		String choice = "y";
+		while (choice.equalsIgnoreCase("y") || choice.equalsIgnoreCase("Y")) {			
+			Console.getString("FIRE! (y/n): ", true);
+			int roll1;
+			//int roll2
+			roll1 = (int) (Math.random() * 6) + 1;
+			if ((int) roll1 == 1||(int) roll1 == 2) {
+				System.out.println("Shot deflected!\n");
+				System.out.println("Maneuvering!\n");
+				continue;
+			}
+			if ((int) roll1 == 3) {
+				System.out.println("Good hit! Enemy track damaged!");
+				continue;
+			}
+			if ((int) roll1 == 4) {
+				System.out.println("Hit! Enemy turret damaged!");
+				continue;
+			}
+			if ((int) roll1 == 5) {
+				System.out.println("Direct hit! Hull penetrated!");
+				continue;
+			}
+			if ((int) roll1 == 6) {
+				System.out.println("Tank destroyed!");
+				break;
+			}
+			//System.out.println("Die 1: " + roll1);
+			//roll2 = (int) (Math.random() * 10) + 1;
+			//System.out.println("Die 2: " + roll2 + "\n");
+			/*if ((int) roll1 + (int) roll2 <= 2) {
+				System.out.println("Snake Eyes!");
+			}
+			if ((int) roll1 + (int) roll2 >= 12) {
+				System.out.println("Box Cars!");
+			}*/
+			Console.getString("Continue? (y/n): ", true);
+			break;
+		}
 	}
 
-	private static void listTanks() {
+	private static void selectTank() {
+		String choice = "y";
+		while (choice.equalsIgnoreCase("y") || choice.equalsIgnoreCase("Y")) {
 		System.out.println();
 		System.out.println("Available Tanks\n" + "---------------\n");
 		for (Tank t : tanks) {
 			System.out.println(t);
 		}
+		System.out.println("Select your tank!\n" + "----------------------\n");
+		int tankId = Console.getInt("Tank ID: ", 0, tanks.size() + 1);
+		System.out.println(tankId + " was selected.");
+		if (tankId == 1) {
+			System.out.println("Your opponent: M26 Pershing");
+		}
+		else if (tankId == 2) {
+			System.out.println("Your opponent: M4 Sherman");
+		}
+		else if (tankId == 3) {
+			System.out.println("Your opponent: M3 Lee");
+		}
+		else if (tankId == 4) {
+			System.out.println("Your opponent: Tiger I");
+		}
+		else if (tankId == 5) {
+			System.out.println("Your opponent: Panther I");
+		}
+		else if (tankId == 6) {
+			System.out.println("Your opponent: Panzer IV");
+		}
+		Console.getString("Continue? (y/n): ", true);
+		break;
+		}
 	}
 
 	private static void displayMenu() {
 		StringBuilder menu = new StringBuilder("COMMAND MENU\n" + "===============\n");
-		menu.append("tanks     -     show available tanks\n");
-		menu.append("upgrate   -     show available upgrades - THIS FEATURE NOT YET AVAILABLE\n");
 		menu.append("history   -     select a tank for information\n");
+		menu.append("play      -     play game\n");
 		menu.append("exit      -     exit program\n");
 		System.out.println(menu);
 	}
