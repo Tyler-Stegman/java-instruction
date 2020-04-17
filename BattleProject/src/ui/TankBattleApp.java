@@ -23,8 +23,8 @@ public class TankBattleApp {
 		tanks.add(t5);
 		tanks.add(t6);
 
-		System.out.println("Tank Battle!\n");
-		/*System.out.println("Tank Battle!\n"
+		/*System.out.println("Tank Battle!\n");
+		System.out.println("Tank Battle!\n"
 		                  + "   [ O ]"
 		                  + "     \ \    p"
 		                  + "      \ \  \o/"
@@ -35,6 +35,13 @@ public class TankBattleApp {
 		              + "   (===(\_________(===(Oo o o O)          W<"
 		              + "   \~~~\____/     \---\Oo__o--"
 		              + "    ~~~~~~~        ~~~~~~~~~~");*/
+		
+		System.out.println("Tank Battle!\n");
+			          System.out.println("      _____");
+				  System.out.println("   __|_>o<_|__");
+				System.out.println("  /___________\\");
+			  System.out.println("  \\=\\>-----</=/");
+		System.out.println();
 		String userName = Console.getString("Enter new username: ", true);
 		System.out.println("Welcome, " + userName + ", to the Tank Battle App!\n");
 		String command = "";
