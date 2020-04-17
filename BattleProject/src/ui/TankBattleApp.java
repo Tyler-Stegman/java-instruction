@@ -36,12 +36,11 @@ public class TankBattleApp {
 		              + "   \~~~\____/     \---\Oo__o--"
 		              + "    ~~~~~~~        ~~~~~~~~~~");*/
 		
-		System.out.println("Tank Battle!\n");
+		System.out.println("  Tank Battle!");
 			          System.out.println("      _____");
 				  System.out.println("   __|_>o<_|__");
 				System.out.println("  /___________\\");
-			  System.out.println("  \\=\\>-----</=/");
-		System.out.println();
+			  System.out.println("  \\=\\>-----</=/\n");
 		String userName = Console.getString("Enter new username: ", true);
 		System.out.println("Welcome, " + userName + ", to the Tank Battle App!\n");
 		String command = "";
