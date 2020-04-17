@@ -24,6 +24,17 @@ public class TankBattleApp {
 		tanks.add(t6);
 
 		System.out.println("Tank Battle!\n");
+		/*System.out.println("Tank Battle!\n"
+		                  + "   [ O ]"
+		                  + "     \ \    p"
+		                  + "      \ \  \o/"
+		                  + "       \ \--'---_"
+		                  + "       /\ \   / ~~\_"
+		              + "   ./---/__|=/_/------//~~~\"
+		              + "   /___________________/O   O \"
+		              + "   (===(\_________(===(Oo o o O)          W<"
+		              + "   \~~~\____/     \---\Oo__o--"
+		              + "    ~~~~~~~        ~~~~~~~~~~");*/
 		String userName = Console.getString("Enter new username: ", true);
 		System.out.println("Welcome, " + userName + ", to the Tank Battle App!\n");
 		String command = "";
@@ -113,7 +124,7 @@ public class TankBattleApp {
 							+ " British Commonwealth and Soviet Union. The tank was named by the British for the American Civil War general William Tecumseh Sherman.\n"
 							+ " The M4 Sherman evolved from the M3 Medium Tank,[N 1] which had its main armament in a side sponson mount. The M4 retained much of the\n"
 							+ " previous mechanical design, but moved the main 75 mm gun into a fully traversing central turret.\n\n"
-							+ " Even by 1944, most M4 Shermans kept their dual-purpose 75 mm gun.[11] By then, the M4 was inferior in firepower and armor to increasing\n"
+							+ " Even by 1944, most M4 Shermans kept their dual-purpose 75 mm gun. By then, the M4 was inferior in firepower and armor to increasing\n"
 							+ " numbers of German heavy tanks, but was able to fight on with the help of considerable numerical superiority, greater mechanical reliability,\n"
 							+ " better logistical support, and support from growing numbers of fighter-bombers and artillery pieces.  Some Shermans were produced with a more\n"
 							+ " capable gun, the 76 mm gun M1, or refitted with a 76.2mm calibre Ordnance QF 17-pounder gun by the British (the Sherman Firefly).\n"
