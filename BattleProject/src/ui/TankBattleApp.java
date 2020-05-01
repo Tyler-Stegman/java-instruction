@@ -1,12 +1,15 @@
 package ui;
 
 import java.util.*;
+
+import business.EnemyTank;
 import business.Tank;
 import util.Console;
 
 public class TankBattleApp {
 
-	private static List<Tank> tanks = new ArrayList<>();
+	private static List<Tank> tanks = new ArrayList<>(10);
+	private static List<EnemyTank> enemyTanks = new ArrayList<>(10);
 
 	public static void main(String[] args) {
 
@@ -22,8 +25,20 @@ public class TankBattleApp {
 		tanks.add(t4);
 		tanks.add(t5);
 		tanks.add(t6);
-		//tanks.get(5).getArmor();
-		//tanks.get(5).setArmor(tanks.get(5).getArmor()-100);
+		EnemyTank eT1 = new EnemyTank(1, "Axis", "Heavy", "Panzerkampfwagen VI (Tiger I)", 800, 1000);
+		EnemyTank eT2 = new EnemyTank(2, "Axis", "Medium", "Panzerkampfwagen V (Panther I)", 800, 800);
+		EnemyTank eT3 = new EnemyTank(3, "Axis", "Light", "Panzerkampfwagen IV (Panzer IV)", 500, 500);
+		EnemyTank eT4 = new EnemyTank(4, "Allies", "Heavy", "M26 Pershing", 750, 1000);
+		EnemyTank eT5 = new EnemyTank(5, "Allies", "Medium", "M4 Sherman (Firefly)", 750, 600);
+		EnemyTank eT6 = new EnemyTank(6, "Allies", "Light", "M3 Stuart", 500, 500);
+		enemyTanks.add(eT1);
+		enemyTanks.add(eT2);
+		enemyTanks.add(eT3);
+		enemyTanks.add(eT4);
+		enemyTanks.add(eT5);
+		enemyTanks.add(eT6);
+		// tanks.get(5).getArmor();
+		// tanks.get(5).setArmor(tanks.get(5).getArmor()-100);
 
 		System.out.println("            Normandy '44\n\n" + "   	 [ O ]\n" + "     	   \\ \\   \n"
 				+ "      	    \\ \\  \n" + "             \\ \\--'---_\n" + "       	   _/ \\ \\   // ~~\\_\n"
@@ -146,7 +161,7 @@ public class TankBattleApp {
 			System.out.println(
 					"July 1944.  Barely a month after the Allied invasion of Normandy, the US First Army captured\n"
 							+ "Cherbourg, and began their attack south towards Saint-Lo.  After a weather delay, the First Army began\n"
-							+ "Operation Cobra on the Saint-Lo-Periers road.  With orders to enter fray at the front,\n"
+							+ "Operation Cobra on the Saint-Lo-Periers road.  With orders to enter the fray at the front,\n"
 							+ "you and your crew join an armored column traveling the Saint-Lo-Periers Road.  Near the city,\n"
 							+ "your armored column is ambushed by a number of enemy tanks and artillery.  With the elements of the\n"
 							+ "front and rear of the column knocked out, your tank becomes trapped in a vortex of murderous fire.\n"
@@ -161,35 +176,88 @@ public class TankBattleApp {
 			if ((int) roll1 == 1) {
 				System.out.println("GUNNER: On the way!\n" + "COMMANDER: Miss!\n"
 						+ "Driver, maneuver to flank posiiton!\n" + "DRIVER: Yes, Sir!\n");
-				enemyTank();
-				continue;
+				enemyTanks.get(1).getArmor();
+				enemyTanks.get(1).setArmor(tanks.get(1).getArmor() - 0);
+				System.out.println("Enemy armor: " + enemyTanks.get(1).getArmor());
+				if (enemyTanks.get(1).getArmor() <= 0) {
+					System.out.println("COMMANDER: Target cease fire.");
+					System.out.println("COMMANDER: Good shooting! Enemy Tank destroyed!");
+					endGame();
+				} else {
+					enemyTank();
+					continue;
+				}
 			} else if ((int) roll1 == 2) {
 				System.out.println("GUNNER: On the way!\n" + "COMMANDER: Shot deflected!\n"
 						+ "Driver, get this thing in position!\n" + "DRIVER: Maneuvering!\n");
 				System.out.println("    ___\r\n" + " __(   )====::\r\n" + "/~~~~~~~~~\\\r\n" + "\\O.O.O.O.O/\n");
-				enemyTank();
-				continue;
+				enemyTanks.get(1).getArmor();
+				enemyTanks.get(1).setArmor(tanks.get(1).getArmor() - 75);
+				System.out.println("Enemy armor: " + enemyTanks.get(1).getArmor());
+				if (enemyTanks.get(1).getArmor() <= 0) {
+					System.out.println("COMMANDER: Target cease fire.");
+					System.out.println("COMMANDER: Good shooting! Enemy Tank destroyed!");
+					endGame();
+				} else {
+					enemyTank();
+					continue;
+				}
 			} else if ((int) roll1 == 3) {
 				System.out.println("GUNNER: On the way!\n"
 						+ "COMMANDER: On target! Enemy is still engaging.  Get that gun loaded!\n");
-				enemyTank();
-				continue;
+				enemyTanks.get(1).getArmor();
+				enemyTanks.get(1).setArmor(tanks.get(1).getArmor() - 100);
+				System.out.println("Enemy armor: " + enemyTanks.get(1).getArmor());
+				if (enemyTanks.get(1).getArmor() <= 0) {
+					System.out.println("COMMANDER: Target cease fire.");
+					System.out.println("COMMANDER: Good shooting! Enemy Tank destroyed!");
+					endGame();
+				} else {
+					enemyTank();
+					continue;
+				}
 			} else if ((int) roll1 == 4) {
 				System.out.println("GUNNER: On the way!\n" + "COMMANDER: Hit! Enemy taking damage!  Stay on target!\n");
-				enemyTank();
-				continue;
+				enemyTanks.get(1).getArmor();
+				enemyTanks.get(1).setArmor(tanks.get(1).getArmor() - 200);
+				System.out.println("Enemy armor: " + enemyTanks.get(1).getArmor());
+				if (enemyTanks.get(1).getArmor() <= 0) {
+					System.out.println("COMMANDER: Target cease fire.");
+					System.out.println("COMMANDER: Good shooting! Enemy Tank destroyed!");
+					endGame();
+				} else {
+					enemyTank();
+					continue;
+				}
 			} else if ((int) roll1 == 5) {
 				System.out.println(
 						"GUNNER: On the way!\n" + "COMMANDER: Direct hit! Enemy hull penetrated!  Pour it on 'em!\n");
-				enemyTank();
-				continue;
+				enemyTanks.get(1).getArmor();
+				enemyTanks.get(1).setArmor(tanks.get(1).getArmor() - 250);
+				System.out.println("Enemy armor: " + enemyTanks.get(1).getArmor());
+				if (enemyTanks.get(1).getArmor() <= 0) {
+					System.out.println("COMMANDER: Target cease fire.");
+					System.out.println("COMMANDER: Good shooting! Enemy Tank destroyed!");
+					endGame();
+				} else {
+					enemyTank();
+					continue;
+				}
 			} else if ((int) roll1 == 6) {
-				System.out.println("GUNNER: On the way!\n" + "COMMANDER: Target cease fire.\n"
-						+ "Good shooting! Enemy Tank destroyed!\n");
-				break;
+				System.out.println("GUNNER: On the way!\n" + "COMMANDER: Keep it up! They're taking a beating!\n");
+				enemyTanks.get(1).getArmor();
+				enemyTanks.get(1).setArmor(tanks.get(1).getArmor() - 100);
+				System.out.println("Enemy armor: " + enemyTanks.get(1).getArmor());
+				if (enemyTanks.get(1).getArmor() <= 0) {
+					System.out.println("COMMANDER: Target cease fire.");
+					System.out.println("COMMANDER: Good shooting! Enemy Tank destroyed!");
+					endGame();
+				} else {
+					enemyTank();
+					continue;
+				}
 			}
 		}
-		// Console.getString("Continue? (y/n): ", "y", "n");
 	}
 
 	private static void selectTank() {
