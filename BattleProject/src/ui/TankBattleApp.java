@@ -176,10 +176,23 @@ public class TankBattleApp {
 			if ((int) roll1 == 1) {
 				System.out.println("GUNNER: On the way!\n" + "COMMANDER: Miss!\n"
 						+ "Driver, maneuver to flank posiiton!\n" + "DRIVER: Yes, Sir!\n");
+				/*
+				 * beginning here, the enemy tank should start taking damage.  So, the enemy tank armor value
+				 * should decrement based on the "enemyTanks.get(1).setArmor(tanks.get(1).getArmor() - 0);" statement.
+				 * In this case, 0 should be subtracted from the armor value.  For other rolls, damage should start decrementing from the armor value.
+				 * I'm wanting the program to register the damage taken per "turn",
+				 * then save that value for future turns, so ultimately the armor value will be 0, which would end the game.  Right now,
+				 * the armor value is resetting after each turn to it's value in the array, so winning is currently impossible.  Since i'm
+				 * passing (1) into each method, the only armor value that is taking damage currently is the Tiger I.  I'd like this to be dynamic
+				 * depending on the player's tank and enemy tank.
+				 */
 				enemyTanks.get(1).getArmor();
 				enemyTanks.get(1).setArmor(tanks.get(1).getArmor() - 0);
 				System.out.println("Enemy armor: " + enemyTanks.get(1).getArmor());
 				if (enemyTanks.get(1).getArmor() <= 0) {
+					/*
+					 * If after a roll the armor value <= 0, the player wins, and the game should end, asking if you would like to return to the main menu.
+					 */
 					System.out.println("COMMANDER: Target cease fire.");
 					System.out.println("COMMANDER: Good shooting! Enemy Tank destroyed!");
 					endGame();
