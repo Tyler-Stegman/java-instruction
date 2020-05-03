@@ -176,23 +176,10 @@ public class TankBattleApp {
 			if ((int) roll1 == 1) {
 				System.out.println("GUNNER: On the way!\n" + "COMMANDER: Miss!\n"
 						+ "Driver, maneuver to flank posiiton!\n" + "DRIVER: Yes, Sir!\n");
-				/*
-				 * beginning here, the enemy tank should start taking damage.  So, the enemy tank armor value
-				 * should decrement based on the "enemyTanks.get(1).setArmor(tanks.get(1).getArmor() - 0);" statement.
-				 * In this case, 0 should be subtracted from the armor value.  For other rolls, damage should start decrementing from the armor value.
-				 * I'm wanting the program to register the damage taken per "turn",
-				 * then save that value for future turns, so ultimately the armor value will be 0, which would end the game.  Right now,
-				 * the armor value is resetting after each turn to it's value in the array, so winning is currently impossible.  Since i'm
-				 * passing (1) into each method, the only armor value that is taking damage currently is the Tiger I.  I'd like this to be dynamic
-				 * depending on the player's tank and enemy tank.
-				 */
 				enemyTanks.get(1).getArmor();
-				enemyTanks.get(1).setArmor(tanks.get(1).getArmor() - 0);
+				enemyTanks.get(1).setArmor(enemyTanks.get(1).getArmor() - 0);
 				System.out.println("Enemy armor: " + enemyTanks.get(1).getArmor());
 				if (enemyTanks.get(1).getArmor() <= 0) {
-					/*
-					 * If after a roll the armor value <= 0, the player wins, and the game should end, asking if you would like to return to the main menu.
-					 */
 					System.out.println("COMMANDER: Target cease fire.");
 					System.out.println("COMMANDER: Good shooting! Enemy Tank destroyed!");
 					endGame();
@@ -205,7 +192,7 @@ public class TankBattleApp {
 						+ "Driver, get this thing in position!\n" + "DRIVER: Maneuvering!\n");
 				System.out.println("    ___\r\n" + " __(   )====::\r\n" + "/~~~~~~~~~\\\r\n" + "\\O.O.O.O.O/\n");
 				enemyTanks.get(1).getArmor();
-				enemyTanks.get(1).setArmor(tanks.get(1).getArmor() - 75);
+				enemyTanks.get(1).setArmor(enemyTanks.get(1).getArmor() - 75);
 				System.out.println("Enemy armor: " + enemyTanks.get(1).getArmor());
 				if (enemyTanks.get(1).getArmor() <= 0) {
 					System.out.println("COMMANDER: Target cease fire.");
@@ -219,7 +206,7 @@ public class TankBattleApp {
 				System.out.println("GUNNER: On the way!\n"
 						+ "COMMANDER: On target! Enemy is still engaging.  Get that gun loaded!\n");
 				enemyTanks.get(1).getArmor();
-				enemyTanks.get(1).setArmor(tanks.get(1).getArmor() - 100);
+				enemyTanks.get(1).setArmor(enemyTanks.get(1).getArmor() - 100);
 				System.out.println("Enemy armor: " + enemyTanks.get(1).getArmor());
 				if (enemyTanks.get(1).getArmor() <= 0) {
 					System.out.println("COMMANDER: Target cease fire.");
@@ -232,7 +219,7 @@ public class TankBattleApp {
 			} else if ((int) roll1 == 4) {
 				System.out.println("GUNNER: On the way!\n" + "COMMANDER: Hit! Enemy taking damage!  Stay on target!\n");
 				enemyTanks.get(1).getArmor();
-				enemyTanks.get(1).setArmor(tanks.get(1).getArmor() - 200);
+				enemyTanks.get(1).setArmor(enemyTanks.get(1).getArmor() - 200);
 				System.out.println("Enemy armor: " + enemyTanks.get(1).getArmor());
 				if (enemyTanks.get(1).getArmor() <= 0) {
 					System.out.println("COMMANDER: Target cease fire.");
@@ -246,7 +233,7 @@ public class TankBattleApp {
 				System.out.println(
 						"GUNNER: On the way!\n" + "COMMANDER: Direct hit! Enemy hull penetrated!  Pour it on 'em!\n");
 				enemyTanks.get(1).getArmor();
-				enemyTanks.get(1).setArmor(tanks.get(1).getArmor() - 250);
+				enemyTanks.get(1).setArmor(enemyTanks.get(1).getArmor() - 250);
 				System.out.println("Enemy armor: " + enemyTanks.get(1).getArmor());
 				if (enemyTanks.get(1).getArmor() <= 0) {
 					System.out.println("COMMANDER: Target cease fire.");
@@ -259,7 +246,7 @@ public class TankBattleApp {
 			} else if ((int) roll1 == 6) {
 				System.out.println("GUNNER: On the way!\n" + "COMMANDER: Keep it up! They're taking a beating!\n");
 				enemyTanks.get(1).getArmor();
-				enemyTanks.get(1).setArmor(tanks.get(1).getArmor() - 100);
+				enemyTanks.get(1).setArmor(enemyTanks.get(1).getArmor() - 500);
 				System.out.println("Enemy armor: " + enemyTanks.get(1).getArmor());
 				if (enemyTanks.get(1).getArmor() <= 0) {
 					System.out.println("COMMANDER: Target cease fire.");
@@ -304,25 +291,72 @@ public class TankBattleApp {
 			System.out.println("   __|_>o<_|__");
 			System.out.println("  /___________\\");
 			System.out.println("  \\=\\>-----</=/\n");
+			tanks.get(4).getArmor();
+			tanks.get(4).setArmor(tanks.get(1).getArmor() - 0);
+			System.out.println("Your armor: " + tanks.get(1).getArmor());
+			if (tanks.get(4).getArmor() <= 0) {
+				System.out.println("Enemy shot: \n" + "COMMANDER: INCOMI---!\n"
+						+ "SYSTEM: Magazine hit, your tank has been destroyed!\n");
+				endGame();
+			}
 		}
 		if ((int) roll2 == 2) {
 			System.out.println("Enemy shot: Enemy shot deflected!\n");
+			tanks.get(4).getArmor();
+			tanks.get(4).setArmor(tanks.get(4).getArmor() - 75);
+			System.out.println("Your armor: " + tanks.get(4).getArmor());
+			if (tanks.get(4).getArmor() <= 0) {
+				System.out.println("Enemy shot: \n" + "COMMANDER: INCOMI---!\n"
+						+ "SYSTEM: Magazine hit, your tank has been destroyed!\n");
+				endGame();
+			}
 		}
 		if ((int) roll2 == 3) {
 			System.out.println("Enemy shot: Minor damage.\n" + "COMMANDER: We've taken a hit, sustaining!\n");
+			tanks.get(4).getArmor();
+			tanks.get(4).setArmor(tanks.get(4).getArmor() - 100);
+			System.out.println("Your armor: " + tanks.get(4).getArmor());
+			if (tanks.get(4).getArmor() <= 0) {
+				System.out.println("Enemy shot: \n" + "COMMANDER: INCOMI---!\n"
+						+ "SYSTEM: Magazine hit, your tank has been destroyed!\n");
+				endGame();
+			}
 		}
 		if ((int) roll2 == 4) {
 			System.out.println("Enemy shot: Hit.\n" + "DRIVER: Sir, our hydraulics are shot!\n");
+			tanks.get(4).getArmor();
+			tanks.get(4).setArmor(tanks.get(4).getArmor() - 200);
+			System.out.println("Your Armor: " + tanks.get(4).getArmor());
+			if (tanks.get(4).getArmor() <= 0) {
+				System.out.println("Enemy shot: \n" + "COMMANDER: INCOMI---!\n"
+						+ "SYSTEM: Magazine hit, your tank has been destroyed!\n");
+				endGame();
+			}
 		}
 		if ((int) roll2 == 5) {
 			System.out.println("Enemy shot: Direct hit!\n"
 					+ "DRIVER: Sir, we're taking heavy damage! We can't take much more of this!\n"
 					+ "COMMANDER: Steady, boys...\n");
+			tanks.get(4).getArmor();
+			tanks.get(4).setArmor(tanks.get(4).getArmor() - 250);
+			System.out.println("Your armor: " + tanks.get(4).getArmor());
+			if (tanks.get(4).getArmor() <= 0) {
+				System.out.println("Enemy shot: \n" + "COMMANDER: INCOMI---!\n"
+						+ "SYSTEM: Magazine hit, your tank has been destroyed!\n");
+				endGame();
+			}
 		}
 		if ((int) roll2 == 6) {
-			System.out.println("Enemy shot: \n" + "COMMANDER: INCOMI---!\n"
+			System.out.println("Enemy shot: \n" + "COMMANDER: Shit!\n"
 					+ "SYSTEM: Magazine hit, your tank has been destroyed!\n");
-			endGame();
+			tanks.get(4).getArmor();
+			tanks.get(4).setArmor(tanks.get(4).getArmor() - 500);
+			System.out.println("Your armor: " + tanks.get(4).getArmor());
+			if (tanks.get(4).getArmor() <= 0) {
+				System.out.println("Enemy shot: \n" + "COMMANDER: INCOMI---!\n"
+						+ "SYSTEM: Magazine hit, your tank has been destroyed!\n");
+				endGame();
+			}
 		}
 	}
 
