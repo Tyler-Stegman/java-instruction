@@ -10,11 +10,11 @@ public class StudentRegistrationApp {
 		
 		Scanner sc = new Scanner(System.in);
 		
-		System.out.print("Enter first name: ");
+		System.out.print("First name: ");
 		String firstName = sc.next();
-		System.out.print("Enter last name: ");
+		System.out.print("Last name: ");
 		String lastName = sc.next();
-		System.out.print("Enter year of birth: ");
+		System.out.print("Year of birth: ");
 		String birthDate = sc.next();
 		System.out.println();
 		System.out.print("Welcome "+firstName+" "+lastName+"!");
