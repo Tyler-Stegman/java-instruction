@@ -42,7 +42,6 @@ public class CommonDivisorApp {
 			System.out.println();
 			
 		}
-		// bye
 		System.out.println("Bye");
 		sc.close();
 
