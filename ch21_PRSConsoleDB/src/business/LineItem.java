@@ -6,6 +6,7 @@ public class LineItem {
 	private int requestId;
 	private int productId;
 	private int quantity;
+	
 	public LineItem() {
 		super();
 	}

@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class TipCalculatorApp {
 
-	public static void main(String[] args) {
+		public static void main(String[] args) {
 		System.out.println("Welcome to the Tip Calculator!");
 		System.out.println();
 		Scanner sc = new Scanner(System.in);
@@ -48,7 +48,8 @@ public class TipCalculatorApp {
 		}
 		System.out.println("Thanks!");
 		sc.close();
-
 	}
-
+	
 }
+			
+

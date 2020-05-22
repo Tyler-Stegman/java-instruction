@@ -14,7 +14,7 @@ public class CommonDivisorApp {
 			// get user input - x,y
 			System.out.println("Enter first number (x): ");
 			int x = sc.nextInt();
-			System.out.println("Enter first number (y): ");
+			System.out.println("Enter second number (y): ");
 			int y = sc.nextInt();
 			
 			// do biz logic - euclidean algorithm

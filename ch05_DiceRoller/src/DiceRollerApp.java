@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class DiceRollerApp {
-
+		
 	private static String askToContinue(Scanner sc) {
 		System.out.print("Roll again? (y/n): "+"\n");
 		String choice = sc.next();
@@ -12,7 +12,7 @@ public class DiceRollerApp {
 		System.out.println("Welcome to the Dice Roller App!" + "\n");
 		Scanner sc = new Scanner(System.in);
 		String choice = "y";
-		System.out.println("Roll the dice? (y/n): ");
+		System.out.print("Roll the dice? (y/n): ");
 		choice = sc.next();
 		System.out.println();
 		while (choice.equalsIgnoreCase("y")) {

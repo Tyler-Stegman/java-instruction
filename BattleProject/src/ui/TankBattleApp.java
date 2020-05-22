@@ -1,44 +1,48 @@
 package ui;
 
 import java.util.*;
+import java.util.concurrent.ThreadLocalRandom;
 
 import business.EnemyTank;
 import business.Tank;
+import business.TankHistory;
 import util.Console;
 
 public class TankBattleApp {
 
 	private static List<Tank> tanks = new ArrayList<>(10);
 	private static List<EnemyTank> enemyTanks = new ArrayList<>(10);
+	private static List<TankHistory> tankHistory = new ArrayList<>(10);
 
 	public static void main(String[] args) {
 
-		Tank t1 = new Tank(1, "Axis", "Heavy", "Panzerkampfwagen VI (Tiger I)", 800, 1000);
-		Tank t2 = new Tank(2, "Axis", "Medium", "Panzerkampfwagen V (Panther I)", 800, 800);
-		Tank t3 = new Tank(3, "Axis", "Light", "Panzerkampfwagen IV (Panzer IV)", 500, 500);
-		Tank t4 = new Tank(4, "Allies", "Heavy", "M26 Pershing", 750, 1000);
-		Tank t5 = new Tank(5, "Allies", "Medium", "M4 Sherman (Firefly)", 750, 600);
-		Tank t6 = new Tank(6, "Allies", "Light", "M3 Stuart", 500, 500);
+		Tank t1 = new Tank(1, "Allies", "Heavy", "M26 Pershing", 750, 1000);
+		Tank t2 = new Tank(2, "Allies", "Medium", "M4 Sherman (Firefly)", 750, 600);
+		Tank t3 = new Tank(3, "Allies", "Light", "M3 Stuart", 500, 500);
 		tanks.add(t1);
 		tanks.add(t2);
 		tanks.add(t3);
-		tanks.add(t4);
-		tanks.add(t5);
-		tanks.add(t6);
+		
 		EnemyTank eT1 = new EnemyTank(1, "Axis", "Heavy", "Panzerkampfwagen VI (Tiger I)", 800, 1000);
 		EnemyTank eT2 = new EnemyTank(2, "Axis", "Medium", "Panzerkampfwagen V (Panther I)", 800, 800);
 		EnemyTank eT3 = new EnemyTank(3, "Axis", "Light", "Panzerkampfwagen IV (Panzer IV)", 500, 500);
-		EnemyTank eT4 = new EnemyTank(4, "Allies", "Heavy", "M26 Pershing", 750, 1000);
-		EnemyTank eT5 = new EnemyTank(5, "Allies", "Medium", "M4 Sherman (Firefly)", 750, 600);
-		EnemyTank eT6 = new EnemyTank(6, "Allies", "Light", "M3 Stuart", 500, 500);
 		enemyTanks.add(eT1);
 		enemyTanks.add(eT2);
 		enemyTanks.add(eT3);
-		enemyTanks.add(eT4);
-		enemyTanks.add(eT5);
-		enemyTanks.add(eT6);
-		// tanks.get(5).getArmor();
-		// tanks.get(5).setArmor(tanks.get(5).getArmor()-100);
+		
+		TankHistory tH1 = new TankHistory(1, "Axis", "Heavy", "Panzerkampfwagen VI (Tiger I)", 800, 1000);
+		TankHistory tH2 = new TankHistory(2, "Axis", "Medium", "Panzerkampfwagen V (Panther I)", 800, 800);
+		TankHistory tH3 = new TankHistory(3, "Axis", "Light", "Panzerkampfwagen IV (Panzer IV)", 500, 500);
+		TankHistory tH4 = new TankHistory(4, "Allies", "Heavy", "M26 Pershing", 750, 1000);
+		TankHistory tH5 = new TankHistory(5, "Allies", "Medium", "M4 Sherman (Firefly)", 750, 600);
+		TankHistory tH6 = new TankHistory(6, "Allies", "Light", "M3 Stuart", 500, 500);
+		tankHistory.add(tH1);
+		tankHistory.add(tH2);
+		tankHistory.add(tH3);
+		tankHistory.add(tH4);
+		tankHistory.add(tH5);
+		tankHistory.add(tH6);
+		
 
 		System.out.println("            Normandy '44\n\n" + "   	 [ O ]\n" + "     	   \\ \\   \n"
 				+ "      	    \\ \\  \n" + "             \\ \\--'---_\n" + "       	   _/ \\ \\   // ~~\\_\n"
@@ -73,11 +77,10 @@ public class TankBattleApp {
 		System.out.println();
 		System.out.println("Please select a tank");
 		System.out.println("----------------------");
-		for (Tank t : tanks) {
+		for (TankHistory t : tankHistory) {
 			System.out.println(t);
 		}
-		int tankId = Console.getInt("Tank ID: ", 0, tanks.size() + 1);
-		System.out.println(tankId + " was selected.\n");
+		int tankId = Console.getInt("Please select a Tank ID: ", 0, tankHistory.size() + 1);
 		if (tankId == 1) {
 			System.out.println("Panzerkampfwagen VI (Tiger I)\n");
 			System.out.println(
@@ -169,9 +172,9 @@ public class TankBattleApp {
 			System.out.println("COMMANDER: Driver stop! Gunner heat tank!...\n" + "GUNNER: Identified!\n");
 			break;
 		}
-		while (choice.equalsIgnoreCase("y")) {
+		while (!choice.equalsIgnoreCase("n")) {
 			System.out.println("LOADER: Up!\n");
-			Console.getString("COMMANDER: 'FIRE!' (y): ", true);
+			Console.getString("COMMANDER: 'FIRE!' (y/n): ", true);
 			int roll1 = (int) (Math.random() * 6) + 1;
 			if ((int) roll1 == 1) {
 				System.out.println("GUNNER: On the way!\n" + "COMMANDER: Miss!\n"
@@ -179,11 +182,20 @@ public class TankBattleApp {
 				enemyTanks.get(1).getArmor();
 				enemyTanks.get(1).setArmor(enemyTanks.get(1).getArmor() - 0);
 				System.out.println("Enemy armor: " + enemyTanks.get(1).getArmor());
+				/*double t = enemyTanks.get(1).getArmor();
+				t = 800;
+				double enemyArmorValue = enemyTanks.get(1).setArmor(t - 0);
+				System.out.println("enemy armor: " + enemyArmorValue);*/
 				if (enemyTanks.get(1).getArmor() <= 0) {
 					System.out.println("COMMANDER: Target cease fire.");
 					System.out.println("COMMANDER: Good shooting! Enemy Tank destroyed!");
 					endGame();
-				} else {
+				}
+				/*if (enemyArmorValue <= 0) {
+					System.out.println("COMMANDER: Target cease fire.");
+					System.out.println("COMMANDER: Good shooting! Enemy Tank destroyed!");
+					endGame();
+				}*/else {
 					enemyTank();
 					continue;
 				}
@@ -194,17 +206,26 @@ public class TankBattleApp {
 				enemyTanks.get(1).getArmor();
 				enemyTanks.get(1).setArmor(enemyTanks.get(1).getArmor() - 75);
 				System.out.println("Enemy armor: " + enemyTanks.get(1).getArmor());
+				/*double armorValue = t - 75;
+				System.out.println("enemy armor: " + armorValue);*/
 				if (enemyTanks.get(1).getArmor() <= 0) {
 					System.out.println("COMMANDER: Target cease fire.");
 					System.out.println("COMMANDER: Good shooting! Enemy Tank destroyed!");
 					endGame();
-				} else {
+				}
+				/*if (armorValue <= 0) {
+					System.out.println("COMMANDER: Target cease fire.");
+					System.out.println("COMMANDER: Good shooting! Enemy Tank destroyed!");
+					endGame();
+				}*/else {
 					enemyTank();
 					continue;
 				}
 			} else if ((int) roll1 == 3) {
 				System.out.println("GUNNER: On the way!\n"
 						+ "COMMANDER: On target! Enemy is still engaging.  Get that gun loaded!\n");
+				/*double armorValue = t - 100;
+				System.out.println("enemy armor: " + armorValue);*/
 				enemyTanks.get(1).getArmor();
 				enemyTanks.get(1).setArmor(enemyTanks.get(1).getArmor() - 100);
 				System.out.println("Enemy armor: " + enemyTanks.get(1).getArmor());
@@ -212,12 +233,19 @@ public class TankBattleApp {
 					System.out.println("COMMANDER: Target cease fire.");
 					System.out.println("COMMANDER: Good shooting! Enemy Tank destroyed!");
 					endGame();
-				} else {
+				}
+				/*if (armorValue <= 0) {
+					System.out.println("COMMANDER: Target cease fire.");
+					System.out.println("COMMANDER: Good shooting! Enemy Tank destroyed!");
+					endGame();
+				}*/else {
 					enemyTank();
 					continue;
 				}
 			} else if ((int) roll1 == 4) {
 				System.out.println("GUNNER: On the way!\n" + "COMMANDER: Hit! Enemy taking damage!  Stay on target!\n");
+				/*double armorValue = t - 200;
+				System.out.println("enemy armor: " + armorValue);*/
 				enemyTanks.get(1).getArmor();
 				enemyTanks.get(1).setArmor(enemyTanks.get(1).getArmor() - 200);
 				System.out.println("Enemy armor: " + enemyTanks.get(1).getArmor());
@@ -225,13 +253,19 @@ public class TankBattleApp {
 					System.out.println("COMMANDER: Target cease fire.");
 					System.out.println("COMMANDER: Good shooting! Enemy Tank destroyed!");
 					endGame();
-				} else {
+				}
+				/*if (armorValue <= 0) {
+					System.out.println("COMMANDER: Target cease fire.");
+					System.out.println("COMMANDER: Good shooting! Enemy Tank destroyed!");
+					endGame();
+				}*/else {
 					enemyTank();
 					continue;
 				}
 			} else if ((int) roll1 == 5) {
-				System.out.println(
-						"GUNNER: On the way!\n" + "COMMANDER: Direct hit! Enemy hull penetrated!  Pour it on 'em!\n");
+				System.out.println("GUNNER: On the way!\n" + "COMMANDER: Direct hit! Enemy hull penetrated!  Pour it on 'em!\n");
+				/*double armorValue = t - 250;
+				System.out.println("enemy armor: " + armorValue);*/
 				enemyTanks.get(1).getArmor();
 				enemyTanks.get(1).setArmor(enemyTanks.get(1).getArmor() - 250);
 				System.out.println("Enemy armor: " + enemyTanks.get(1).getArmor());
@@ -239,12 +273,20 @@ public class TankBattleApp {
 					System.out.println("COMMANDER: Target cease fire.");
 					System.out.println("COMMANDER: Good shooting! Enemy Tank destroyed!");
 					endGame();
-				} else {
+				}
+				/*if (armorValue <= 0) {
+					System.out.println("COMMANDER: Target cease fire.");
+					System.out.println("COMMANDER: Good shooting! Enemy Tank destroyed!");
+					endGame();
+				}*/
+				else {
 					enemyTank();
 					continue;
 				}
 			} else if ((int) roll1 == 6) {
 				System.out.println("GUNNER: On the way!\n" + "COMMANDER: Keep it up! They're taking a beating!\n");
+				/*double armorValue = t - 500;
+				System.out.println("enemy armor: " + armorValue);*/
 				enemyTanks.get(1).getArmor();
 				enemyTanks.get(1).setArmor(enemyTanks.get(1).getArmor() - 500);
 				System.out.println("Enemy armor: " + enemyTanks.get(1).getArmor());
@@ -252,34 +294,16 @@ public class TankBattleApp {
 					System.out.println("COMMANDER: Target cease fire.");
 					System.out.println("COMMANDER: Good shooting! Enemy Tank destroyed!");
 					endGame();
-				} else {
+				}
+				/*if (armorValue <= 0) {
+					System.out.println("COMMANDER: Target cease fire.");
+					System.out.println("COMMANDER: Good shooting! Enemy Tank destroyed!");
+					endGame();
+				}*/else {
 					enemyTank();
 					continue;
 				}
 			}
-		}
-	}
-
-	private static void selectTank() {
-		System.out.println();
-		System.out.println("Available Tanks\n" + "---------------\n");
-		for (Tank t : tanks) {
-			System.out.println(t);
-		}
-		System.out.println("Select your tank!\n" + "----------------------\n");
-		int tankId = Console.getInt("Tank ID: ", 0, tanks.size() + 1);
-		if (tankId == 1) {
-			System.out.println("Your opponent: M26 Pershing\n");
-		} else if (tankId == 2) {
-			System.out.println("Your opponent: M4 Sherman\n");
-		} else if (tankId == 3) {
-			System.out.println("Your opponent: M3 Stuart\n");
-		} else if (tankId == 4) {
-			System.out.println("Your opponent: Tiger I\n");
-		} else if (tankId == 5) {
-			System.out.println("Your opponent: Panther I\n");
-		} else if (tankId == 6) {
-			System.out.println("Your opponent: Panzer IV\n");
 		}
 	}
 
@@ -291,21 +315,27 @@ public class TankBattleApp {
 			System.out.println("   __|_>o<_|__");
 			System.out.println("  /___________\\");
 			System.out.println("  \\=\\>-----</=/\n");
-			tanks.get(4).getArmor();
-			tanks.get(4).setArmor(tanks.get(1).getArmor() - 0);
+			tanks.get(1).getArmor();
+			tanks.get(1).setArmor(tanks.get(1).getArmor() - 0);
 			System.out.println("Your armor: " + tanks.get(1).getArmor());
-			if (tanks.get(4).getArmor() <= 0) {
+			if (tanks.get(1).getArmor() <= 0) {
 				System.out.println("Enemy shot: \n" + "COMMANDER: INCOMI---!\n"
 						+ "SYSTEM: Magazine hit, your tank has been destroyed!\n");
 				endGame();
 			}
+			/*if (tanks.get(4).getArmor() <= 275) {
+				String choice = Console.getString("SYSTEM: Your tank has taken heavy damage.  Disengage? (y/n): ", "y", "n");
+				while (choice.equalsIgnoreCase("y")) {
+					disengage();
+				}
+			}*/
 		}
 		if ((int) roll2 == 2) {
 			System.out.println("Enemy shot: Enemy shot deflected!\n");
-			tanks.get(4).getArmor();
-			tanks.get(4).setArmor(tanks.get(4).getArmor() - 75);
-			System.out.println("Your armor: " + tanks.get(4).getArmor());
-			if (tanks.get(4).getArmor() <= 0) {
+			tanks.get(1).getArmor();
+			tanks.get(1).setArmor(tanks.get(1).getArmor() - 75);
+			System.out.println("Your armor: " + tanks.get(1).getArmor());
+			if (tanks.get(1).getArmor() <= 0) {
 				System.out.println("Enemy shot: \n" + "COMMANDER: INCOMI---!\n"
 						+ "SYSTEM: Magazine hit, your tank has been destroyed!\n");
 				endGame();
@@ -313,10 +343,10 @@ public class TankBattleApp {
 		}
 		if ((int) roll2 == 3) {
 			System.out.println("Enemy shot: Minor damage.\n" + "COMMANDER: We've taken a hit, sustaining!\n");
-			tanks.get(4).getArmor();
-			tanks.get(4).setArmor(tanks.get(4).getArmor() - 100);
-			System.out.println("Your armor: " + tanks.get(4).getArmor());
-			if (tanks.get(4).getArmor() <= 0) {
+			tanks.get(1).getArmor();
+			tanks.get(1).setArmor(tanks.get(1).getArmor() - 100);
+			System.out.println("Your armor: " + tanks.get(1).getArmor());
+			if (tanks.get(1).getArmor() <= 0) {
 				System.out.println("Enemy shot: \n" + "COMMANDER: INCOMI---!\n"
 						+ "SYSTEM: Magazine hit, your tank has been destroyed!\n");
 				endGame();
@@ -324,10 +354,10 @@ public class TankBattleApp {
 		}
 		if ((int) roll2 == 4) {
 			System.out.println("Enemy shot: Hit.\n" + "DRIVER: Sir, our hydraulics are shot!\n");
-			tanks.get(4).getArmor();
-			tanks.get(4).setArmor(tanks.get(4).getArmor() - 200);
-			System.out.println("Your Armor: " + tanks.get(4).getArmor());
-			if (tanks.get(4).getArmor() <= 0) {
+			tanks.get(1).getArmor();
+			tanks.get(1).setArmor(tanks.get(1).getArmor() - 200);
+			System.out.println("Your Armor: " + tanks.get(1).getArmor());
+			if (tanks.get(1).getArmor() <= 0) {
 				System.out.println("Enemy shot: \n" + "COMMANDER: INCOMI---!\n"
 						+ "SYSTEM: Magazine hit, your tank has been destroyed!\n");
 				endGame();
@@ -337,22 +367,22 @@ public class TankBattleApp {
 			System.out.println("Enemy shot: Direct hit!\n"
 					+ "DRIVER: Sir, we're taking heavy damage! We can't take much more of this!\n"
 					+ "COMMANDER: Steady, boys...\n");
-			tanks.get(4).getArmor();
-			tanks.get(4).setArmor(tanks.get(4).getArmor() - 250);
-			System.out.println("Your armor: " + tanks.get(4).getArmor());
-			if (tanks.get(4).getArmor() <= 0) {
+			tanks.get(1).getArmor();
+			tanks.get(1).setArmor(tanks.get(1).getArmor() - 250);
+			System.out.println("Your armor: " + tanks.get(1).getArmor());
+			if (tanks.get(1).getArmor() <= 0) {
 				System.out.println("Enemy shot: \n" + "COMMANDER: INCOMI---!\n"
 						+ "SYSTEM: Magazine hit, your tank has been destroyed!\n");
 				endGame();
 			}
 		}
 		if ((int) roll2 == 6) {
-			System.out.println("Enemy shot: \n" + "COMMANDER: Shit!\n"
-					+ "SYSTEM: Magazine hit, your tank has been destroyed!\n");
-			tanks.get(4).getArmor();
-			tanks.get(4).setArmor(tanks.get(4).getArmor() - 500);
-			System.out.println("Your armor: " + tanks.get(4).getArmor());
-			if (tanks.get(4).getArmor() <= 0) {
+			System.out.println(
+					"Enemy shot: \n" + "COMMANDER: Shit!\n");
+			tanks.get(1).getArmor();
+			tanks.get(1).setArmor(tanks.get(1).getArmor() - 500);
+			System.out.println("Your armor: " + tanks.get(1).getArmor());
+			if (tanks.get(1).getArmor() <= 0) {
 				System.out.println("Enemy shot: \n" + "COMMANDER: INCOMI---!\n"
 						+ "SYSTEM: Magazine hit, your tank has been destroyed!\n");
 				endGame();
@@ -367,7 +397,25 @@ public class TankBattleApp {
 		menu.append("exit      -     exit program\n");
 		System.out.println(menu);
 	}
-
+	
+	public static void selectTank() {
+		System.out.println();
+		System.out.println("Available Tanks\n" + "---------------\n");
+		int randomIndex = ThreadLocalRandom.current().nextInt( enemyTanks.size() );
+		for (Tank t : tanks) {
+			System.out.println(t);
+		}
+		System.out.println("Select your tank!\n" + "----------------------\n");
+		int tankId = Console.getInt("Tank ID: ", 0, tanks.size() + 1);
+		if (tankId == 1) {
+			System.out.println("Your opponent: " + enemyTanks.get( randomIndex ) );
+		} else if (tankId == 2) {
+			System.out.println("Your opponent: " + enemyTanks.get( randomIndex ) );
+		} else if (tankId == 3) {
+			System.out.println("Your opponent: " + enemyTanks.get( randomIndex ) );
+		}
+	}
+	
 	private static void endGame() {
 		System.out.println("Game Over");
 		String end = Console.getString("Main Menu? (y/n) ", "y", "n");
@@ -399,6 +447,10 @@ public class TankBattleApp {
 				break;
 			}
 		}
+	}
+	
+	private static void disengage() {
+		
 	}
 
 }

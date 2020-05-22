@@ -1,4 +1,5 @@
 package util;
+import java.math.BigInteger;
 import java.text.NumberFormat;
 import java.util.Scanner;
 
@@ -115,6 +116,13 @@ public class Console {
 
     public static void displayLine(String s) {
         System.out.println(s);
+    }
+    
+    public static BigInteger getFactorial(int num) {
+        BigInteger result = BigInteger.ONE;
+        for (int i = 1; i <= num; i++)
+            result = result.multiply(BigInteger.valueOf(i));
+        return result;
     }
     
 }

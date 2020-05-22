@@ -107,5 +107,29 @@ public class Console {
         }
         return d;
     }
+    
+    public static double removeCharacter(String prompt) {
+        double d = 0;
+        while (true) {
+            System.out.print(prompt);
+            try {
+            	String line = sc.nextLine();
+            	String temp = "";
+            	for(int i = 0; i < line.length(); i++) {
+                	if(line.charAt(i) != '$'&& line.charAt(i) !='%') {
+                		temp += line.charAt(i);
+                	}
+                }
+            	line = temp;
+            	
+                d = Double.parseDouble(line);
+                break;
+            } catch (NumberFormatException e) {
+                System.out.println("Error! Invalid decimal. Try again.");
+            }
+            
+        }
+        return d;
+    }
 }
 
